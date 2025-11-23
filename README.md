@@ -33,17 +33,15 @@ This project is based on the methodologies introduced in two foundational resear
 
 ## Background & Motivation
 
-Deep neural networks are vulnerable to small, human-imperceptible perturbations known as **adversarial examples** , tiny pixel changes that can cause large misclassifications.  
+Deep neural networks are vulnerable to small, human-imperceptible perturbations known as **adversarial examples**, tiny pixel changes that can cause large misclassifications.  
 These vulnerabilities pose critical challenges for **security, reliability, and interpretability** in ML systems.
 
 Rather than training a noise generator (as other teams might do), our project performs a **systematic and reproducible comparison** of standard white-box attacks to highlight practical **trade-offs** between:
 
 - **Attack strength:** impact on model accuracy  
-- **Perturbation visibility:** measured with L∞ and L2 norms  
+- **Perturbation visibility:** measured with L2 norms  
 - **Computation cost:** time per image / per batch  
 - **Transferability:** how well adversarial samples fool other architectures  
-
-This focus on reproducibility and interpretability makes the project useful for both **academic study** and **real-world ML reliability** analysis.
 
 ---
 
@@ -88,7 +86,6 @@ To ensure modularity and reproducibility, the project was executed in the follow
 ### Phase 3: Benchmarking & Analysis
 * Run attacks across test sets with varying epsilon ($\epsilon$) values.
 * Collect metrics: Accuracy drop, computation time, and perturbation magnitude.
-* Generate the **Transferability Matrix** (testing attacks generated on Model A against Model B).
 
 ### Phase 4: Defense Mechanism (Adversarial Training)
 * Implement the training loop that generates PGD examples on-the-fly.
