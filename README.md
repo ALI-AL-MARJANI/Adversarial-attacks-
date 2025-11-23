@@ -17,7 +17,7 @@ Our goal is to provide a **clear, reproducible, and interpretable** experimental
 
 This project is based on the methodologies introduced in two foundational research papers: 
 - **[Towards Deep Learning Models Resistant to Adversarial Attacks](https://arxiv.org/pdf/1706.06083)** (2018)
-- **[Explaining and Harnessing Adversarial Examples](https://arxiv.org/pdf/1412.6572)** (2015).
+- **[Explaining and Harnessing Adversarial Examples](https://arxiv.org/pdf/1412.6572)** (2015)
 
 ---
 
