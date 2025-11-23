@@ -29,7 +29,7 @@ Our goal is to provide a **clear, reproducible, and interpretable** experimental
 
 ## Background & Motivation
 
-Deep neural networks are vulnerable to small, human-imperceptible perturbations known as **adversarial examples** — tiny pixel changes that can cause large misclassifications.  
+Deep neural networks are vulnerable to small, human-imperceptible perturbations known as **adversarial examples** , tiny pixel changes that can cause large misclassifications.  
 These vulnerabilities pose critical challenges for **security, reliability, and interpretability** in ML systems.
 
 Rather than training a noise generator (as other teams might do), our project performs a **systematic and reproducible comparison** of standard white-box attacks to highlight practical **trade-offs** between:
@@ -46,24 +46,24 @@ This focus on reproducibility and interpretability makes the project useful for 
 ##  Project Objectives
 
 ### Goals
-- [x] **Implement** three well-known adversarial attacks using PyTorch:
+- **Implement** three well-known adversarial attacks using PyTorch:
   - `FGSM` (Fast Gradient Sign Method)
   - `PGD` (Projected Gradient Descent)
   - `DeepFool`
-- [x] **Evaluate** each attack in terms of:
+- **Evaluate** each attack in terms of:
   - Model accuracy (clean vs attacked)
   - Perturbation norms (L2)
   - Average generation time per image
   - Transferability between architectures
-- [x] **Test** on:
+- **Test** on:
   - **MNIST** → lightweight, visual debugging
   - **CIFAR-10** → realistic, more complex setup
-- [x] **Deliver** professional and reproducible materials:
+- **Deliver** professional and reproducible materials:
   - code, organized notebooks, plots, report, and slides
 
 ### Optional Extensions
-- [x] Implement **Adversarial Training** (PGD-based)  
-- [x] Study how including adversarial samples during training affects robustness and cost.
+- Implement **Adversarial Training** (PGD-based)  
+- Study how including adversarial samples during training affects robustness and cost.
 
 ---
 
