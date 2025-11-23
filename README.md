@@ -51,7 +51,7 @@ This focus on reproducibility and interpretability makes the project useful for 
   - `DeepFool`
 - **Evaluate** each attack in terms of:
   - Model accuracy (clean vs attacked)
-  - Perturbation norms (L∞, L2)
+  - Perturbation norms (L2)
   - Average generation time per image
   - Transferability between architectures
 - **Test** on:
@@ -61,11 +61,44 @@ This focus on reproducibility and interpretability makes the project useful for 
   - Modular code, organized notebooks, plots, report, and slides
 
 ### Optional Extensions
-- Implement **Adversarial Training** (e.g., FGSM-based)  
-  → Study how including adversarial samples during training affects robustness and cost.
+- Implement **Adversarial Training** (PGD-based)  
+- Study how including adversarial samples during training affects robustness and cost.
 
 
-##  Implementation Plan (A–Z)
+## What We Learned : 
+
+Throughout this project, we implemented and analyzed three major adversarial attacks : FGSM, PGD, and DeepFool on both MNIST and CIFAR-10. This allowed us to study how different attacks impact model predictions in terms of:
+
+- Attack strength (accuracy drop under perturbations)
+
+- Perturbation magnitude (L2 distances)
+
+- Visual perceptibility of adversarial noise
+
+- Transferability across datasets and models
+
+A key finding of our experiments is the extreme vulnerability of standard neural networks:
+even tiny, human-imperceptible perturbations can drop accuracy from 99% to 0% under strong iterative attacks such as PGD.
+
+To address this limitation, we implemented PGD adversarial training, a defense strategy where adversarial examples are generated during training so the model learns to resist them. This method, popularized by Madry et al. (2018), is considered the gold standard in adversarial robustness research.
+
+Our results clearly demonstrate the benefits:
+
+A small reduction in clean accuracy (98.7% → 97.1%)
+
+A huge improvement in robustness, with PGD accuracy rising from 0% (normal model) to ≈ 79% (robust model)
+
+This confirms that adversarial training greatly enhances model stability, making it significantly more resistant to gradient-based attacks.
+
+Overall, this project helped us understand:
+
+- How adversarial attacks exploit model gradients
+
+- Why iterative attacks (PGD, DeepFool) are stronger than single-step attacks (FGSM)
+
+- How robustness can be measured using accuracy curves, norms, and visualization
+
+- Why adversarial defenses are essential for deploying ML models in safety-critical environments
 
 ### Environment Setup
 - Create a Python environment (`conda` or `venv`)  
