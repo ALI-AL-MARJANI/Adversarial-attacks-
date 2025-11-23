@@ -8,9 +8,9 @@ from torch.autograd import Variable
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
-# Denormalizsation function
-
+# Denormalizsation 
 def denorm(batch, mean=[0.1307], std=[0.3081]):
+    
     if isinstance(mean, list):
         mean = torch.tensor(mean).to(device)
     if isinstance(std, list):
@@ -21,9 +21,7 @@ def denorm(batch, mean=[0.1307], std=[0.3081]):
 
 # FGSM Attack
 def fgsm_attack(image, epsilon, data_grad):
-    """
-    Fast Gradient Sign Method (FGSM)
-    """
+    
     sign_data_grad = data_grad.sign()
     perturbed_image = image + epsilon * sign_data_grad
     perturbed_image = torch.clamp(perturbed_image, 0, 1)
@@ -56,10 +54,10 @@ def pgd_attack(model, images, labels, eps=0.3, alpha=2/255, iters=40):
     return images, adv_images - ori_images
 
 
-# DeepFool Attack (L2)
-def deepfool(model, image, num_classes=10, max_iter=50):
+# DeepFool Attack 
+def deepfool(model, image, num_classes=10, max_iter=50 , overshoot=0.02):
     """
-    We Compute the minimal L2 perturbation required to change classifier decision.
+    We Compute the minimal L2 perturbation required to change classifier decision
     """
     model.eval()
     x = image.clone().detach().to(device)
