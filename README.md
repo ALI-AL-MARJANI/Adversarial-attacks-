@@ -94,7 +94,7 @@ To ensure modularity and reproducibility, the project was executed in the follow
 
 ---
 
-# What We Learned
+# What We Learned : 
 
 Throughout this project, we implemented and analyzed three major adversarial attacks : **FGSM**, **PGD**, and **DeepFool** on both MNIST and CIFAR-10. This allowed us to study how different attacks impact model predictions in terms of:
 
@@ -121,11 +121,3 @@ This confirms that adversarial training greatly enhances model stability, making
 * How robustness can be measured using accuracy curves, norms, and visualization
 * Why adversarial defenses are essential for deploying ML models in safety-critical environments
 
----
-
-## Environment Setup
-
-- Create a Python environment (`conda` or `venv`)  
-- Dependencies:
-  ```bash
-  pip install torch torchvision numpy pandas matplotlib tqdm scikit-image
