@@ -9,6 +9,11 @@ Experiments are conducted on the **MNIST** and **CIFAR-10** datasets.
 
 Our goal is to provide a **clear, reproducible, and interpretable** experimental study of how different attack strategies impact model robustness, visual perturbation quality, and computational cost.
 
+<p align="center">
+  <img src="1_8FhisenG1AsVv-MxRpVYZg.png" width="600">
+</p>
+
+
 **Deliverables include:**
 - Clean and reproducible code
 - Well-documented Jupyter notebooks
