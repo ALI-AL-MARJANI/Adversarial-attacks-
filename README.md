@@ -10,7 +10,7 @@ Experiments are conducted on the **MNIST** and **CIFAR-10** datasets.
 Our goal is to provide a **clear, reproducible, and interpretable** experimental study of how different attack strategies impact model robustness, visual perturbation quality, and computational cost.
 
 <p align="center">
-  <img src="1_8FhisenG1AsVv-MxRpVYZg.png" width="600">
+  <img src="1_8FhisenG1AsVv-MxRpVYZg.png" width="1200">
 </p>
 
 
@@ -32,70 +32,69 @@ This project is based on the methodologies introduced in two foundational resear
 2. [Project Objectives](#-project-objectives)
 3. [Implementation Plan (A–Z)](#-implementation-plan-a–z)
 4. [What We Learned](#-what-we-learned)
-5. [Environment Setup](#-environment-setup)
 
 ---
 
 ## Background & Motivation
 
-Deep neural networks are vulnerable to small, human-imperceptible perturbations known as **adversarial examples**, tiny pixel changes that can cause large misclassifications.  
-These vulnerabilities pose critical challenges for **security, reliability, and interpretability** in ML systems.
+Deep neural networks can be fooled by tiny, imperceptible perturbations known as **adversarial examples**, causing confident misclassifications. These weaknesses raise important concerns for the **security, reliability, and robustness** of modern ML systems.
 
-Rather than training a noise generator (as other teams might do), our project performs a **systematic and reproducible comparison** of standard white-box attacks to highlight practical **trade-offs** between:
+Rather than designing new architectures, our project provides a **concise and reproducible comparison** of three standard white-box attacks to highlight key trade-offs:
 
-- **Attack strength:** impact on model accuracy  
-- **Perturbation visibility:** measured with L2 norms  
-- **Computation cost:** time per image / per batch  
-- **Transferability:** how well adversarial samples fool other architectures  
+- **Attack strength:** accuracy degradation  
+- **Perturbation visibility:** L2 magnitude  
+- **Computation cost:** efficiency of each attack  
+- **Transferability:** effectiveness across models  
 
 ---
 
-##  Project Objectives
+## Project Objectives
 
-### Goals
-- **Implement** three well-known adversarial attacks using PyTorch:
-  - `FGSM` (Fast Gradient Sign Method)
-  - `PGD` (Projected Gradient Descent)
-  - `DeepFool`
-- **Evaluate** each attack in terms of:
-  - Model accuracy (clean vs attacked)
-  - Perturbation norms (L2)
-  - Average generation time per image
-  - Transferability between architectures
-- **Test** on:
-  - **MNIST** → lightweight, visual debugging
-  - **CIFAR-10** → realistic, more complex setup
-- **Deliver** professional and reproducible materials:
-  - code, organized notebooks, plots, report, and slides
+- **Implement** three major adversarial attacks using PyTorch:  
+  - FGSM (Fast Gradient Sign Method)  
+  - PGD (Projected Gradient Descent)  
+  - DeepFool  
+
+- **Evaluate** each attack on:  
+  - Clean vs adversarial accuracy  
+  - Perturbation norms (L2)  
+  - Computation time  
+  - Transferability across architectures  
+
+- **Test** on two complementary datasets:  
+  - **MNIST** – simple and interpretable  
+  - **CIFAR-10** – more complex and realistic  
+
+- **Deliver** clean and reproducible materials:  
+  modular code, notebooks, visualizations, final report, and slides
 
 ### Optional Extensions
-- Implement **Adversarial Training** (PGD-based)  
-- Study how including adversarial samples during training affects robustness and cost.
+- Implement **PGD adversarial training** and compare “clean” vs “robust” models.
 
 ---
 
 ## Implementation Plan (A–Z)
 
-To ensure modularity and reproducibility, the project was executed in the following phases:
+### Phase 1 — Baselines
+- Build PyTorch dataloaders (MNIST & CIFAR-10)  
+- Train standard clean CNN/ResNet models  
+- Implement helper functions (accuracy, visualization)
 
-### Phase 1: Infrastructure & Baselines
-* Set up the PyTorch data loaders for **MNIST** and **CIFAR-10**.
-* Train standard "Clean" models (CNNs/ResNet) to establish baseline accuracy.
-* Implement evaluation helper functions (visualization of tensors, accuracy calculation).
+### Phase 2 — Attack Implementation
+- **FGSM:** one-step gradient attack  
+- **PGD:** iterative projected attack  
+- **DeepFool:** minimal decision boundary perturbation  
 
-### Phase 2: Attack Implementation
-* **FGSM:** Implement single-step gradient attacks.
-* **PGD:** Implement iterative attacks with random restarts (Projected Gradient Descent).
-* **DeepFool:** Implement the optimization strategy for finding the closest decision boundary.
+### Phase 3 — Benchmarking & Analysis
+- Run attacks with different ε values  
+- Measure accuracy drop, perturbation magnitude, computation cost  
+- Generate visual adversarial examples  
 
-### Phase 3: Benchmarking & Analysis
-* Run attacks across test sets with varying epsilon ($\epsilon$) values.
-* Collect metrics: Accuracy drop, computation time, and perturbation magnitude.
+### Phase 4 — Defense Mechanism (Adversarial Training)
+- Implement PGD-based adversarial training  
+- Retrain models with adversarial examples  
+- Compare robust vs clean performance  
 
-### Phase 4: Defense Mechanism (Adversarial Training)
-* Implement the training loop that generates PGD examples on-the-fly.
-* Retrain models using this adversarial augmentation.
-* Compare "Robust" models against the original "Clean" models.
 
 ---
 
