@@ -38,12 +38,12 @@ This project is based on the methodologies introduced in two foundational resear
 
 ## Background & Motivation
 
-Deep neural networks can be fooled by tiny, imperceptible perturbations known as **adversarial examples**, causing confident misclassifications. These weaknesses raise important concerns for the **security, reliability, and robustness** of modern ML systems.
+Deep neural networks can be fooled by tiny, imperceptible perturbations known as **adversarial attacks**, causing confident misclassifications. These weaknesses raise important concerns for the **security, reliability, and robustness** of modern ML systems.
 
 Rather than designing new architectures, our project provides a **concise and reproducible comparison** of three standard white-box attacks to highlight key trade-offs:
 
 - **Attack strength:** accuracy degradation  
-- **Perturbation visibility:** L2 magnitude  
+- **Perturbation visibility:** L2 magnitude of the perturbation  
 - **Computation cost:** efficiency of each attack  
 - **Transferability:** effectiveness across models  
 
@@ -78,7 +78,7 @@ Rather than designing new architectures, our project provides a **concise and re
 
 ### Phase 1 — Baselines
 - Build PyTorch dataloaders (MNIST & CIFAR-10)  
-- Train standard clean CNN/ResNet models  
+- Load pretrained CNN/ResNet models  
 - Implement helper functions (accuracy, visualization)
 
 ### Phase 2 — Attack Implementation
@@ -109,6 +109,7 @@ Throughout this project, we implemented and analyzed three major adversarial att
 * Transferability across datasets and models
 
 ### Key Findings
+Each attack has its own strengths and characteristics. FGSM is a simple, single-step attack, which makes it very easy to implement and to understand. PGD is a much stronger iterative attack that can drastically reduce the accuracy of pretrained models. However, the effectiveness of both FGSM and PGD depends heavily on the choice of hyperparameters. This is where DeepFool is particularly strong, because it does not rely on additional parameters beyond the original data and model. 
 
 A key finding of our experiments is the extreme vulnerability of standard neural networks: **even tiny, human-imperceptible perturbations can drop accuracy from 99% to 0% under strong iterative attacks such as PGD.**
 
@@ -126,3 +127,5 @@ This confirms that adversarial training greatly enhances model stability, making
 * How robustness can be measured using accuracy curves, norms, and visualization
 * Why adversarial defenses are essential for deploying ML models in safety-critical environments
 
+### Unexplained Observations
+In our experiments with the DeepFool attack on the MNIST dataset, we observed that the network often predicted the same adversarial label for many different perturbed inputs. Although this suggests some particular structure in the decision regions learned by the model, we were not able to identify a clear explanation for this behavior within the scope of this project.
